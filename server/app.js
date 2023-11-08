@@ -25,6 +25,9 @@ app.get('/', (req, res) => {
 // auth routes
 app.use('/auth', require('./routes/auth.route'));
 
+// employee routes
+app.use('/api', require('./routes/employee.route'));
+
 // listening to the port
 app.listen(port, () => {
     console.log(`App running on port http://localhost:${port}`)

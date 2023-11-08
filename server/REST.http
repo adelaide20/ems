@@ -16,3 +16,16 @@ content-type: application/json
     "email": "admin@ems.com",
     "password": "admin123"
 }
+
+
+
+### add new employee
+POST http://localhost:8000/api/new
+content-type: application/json
+
+{
+    "first_name": "adel",
+    "last_name": "madisha",
+    "email": "adwsel@ems.com",
+    "contactno": "0987654321"
+}

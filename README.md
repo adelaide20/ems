@@ -10,3 +10,7 @@ devops: render && vercel
 
 ### running the server
 npm run app
+
+
+### running the client app
+ng serve --o
