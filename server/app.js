@@ -5,6 +5,8 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
+// importing db configuration
+require('./config/db.config')
 
 // basic route
 app.get('/', (req, res) => {
