@@ -5,3 +5,14 @@ GET http://localhost:8000
 
 ### set admin 
 POST http://localhost:8000/auth/set
+
+
+
+### admin login
+POST http://localhost:8000/auth/login
+content-type: application/json
+
+{
+    "email": "admin@ems.com",
+    "password": "admin123"
+}
