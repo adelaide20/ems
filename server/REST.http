@@ -1,2 +1,7 @@
 ### basic route
-http://localhost:8000
+GET http://localhost:8000
+
+
+
+### set admin 
+POST http://localhost:8000/auth/set

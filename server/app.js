@@ -13,6 +13,9 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Employee Management System' })
 })
 
+// auth routes
+app.use('/auth', require('./routes/auth.route'));
+
 // listening to the port
 app.listen(port, () => {
     console.log(`App running on port http://localhost:${port}`)
