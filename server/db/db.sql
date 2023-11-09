@@ -25,13 +25,15 @@ CREATE TABLE  employees  (
 DROP TABLE IF EXISTS employment CASCADE;
 CREATE TABLE  employment  (
    id SERIAL PRIMARY KEY UNIQUE,
-   employee varchar(255),
+   employee INT,
    position varchar(255),
-   emp_status varchar(255) DEFAULT active,
+   emp_status varchar(255) DEFAULT 'active',
    start_date date,
-   salary varchar(255),
+   salary DECIMAL(10,2),
    end_date date,
-   visibility BOOLEAN DEFAULT false,
+   visibility BOOLEAN DEFAULT true,
    FOREIGN KEY (employee) REFERENCES employees(emp_id)
 );
+
+
 

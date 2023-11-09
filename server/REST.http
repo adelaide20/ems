@@ -34,4 +34,22 @@ content-type: application/json
 
 
 ### list all employees
-GET http://localhost:8000/api/list
+GET http://localhost:8000/api/emps
+
+
+
+### add employment details
+POST http://localhost:8000/api/employ
+content-type: application/json
+
+{
+    "employee": 4,
+    "position": "technician",
+    "start_date": "11/11/2023",
+    "salary": 2000
+}
+
+
+
+### list all employees and their employment details
+GET http://localhost:8000/api/one/2
