@@ -2,7 +2,7 @@ const pool = require('../config/db.config.js');
 
 
 // add new employee
-exports.newEmployee = async (request, response) => {
+exports.newEmployee = async(request, response) => {
     // 1. variable holding the data enter 
     const employee = {
         first_name: request.body.first_name,
@@ -20,7 +20,7 @@ exports.newEmployee = async (request, response) => {
         })
     }
 
-    // try {
+    try {
 
         // check if employee exists
         const checkEmployee = await pool.query(
@@ -33,8 +33,7 @@ exports.newEmployee = async (request, response) => {
                 status: 'Failed',
                 message: 'Employee already exists'
             });
-        }
-        else {
+        } else {
             // add an employee
             pool.query(`INSERT INTO employees (first_name, last_name, email, gender, contactno) 
                 VALUES ($1, $2, $3, $4, $5) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.gender, employee.contactno],
@@ -46,11 +45,33 @@ exports.newEmployee = async (request, response) => {
                 })
         }
 
-    // } catch (error) {
-    //     response.status(400).json({
-    //         message: "Failed to add an employee",
-    //         error: error
-    //     });
-    // }
+    } catch (error) {
+        response.status(400).json({
+            message: "Failed to add an employee",
+            error: error
+        });
+    }
+
+}
+
+
+
+// get all employees
+exports.allEmployees = (request, response) => {
+
+    try {
+        pool.query(`SELECT * FROM employees 
+        ORDER BY first_name ASC;`, (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).json(results.rows)
+        });
+    } catch (error) {
+        response.status(400).json({
+            message: "Failed to get all employees",
+            error: error
+        });
+    }
 
 }

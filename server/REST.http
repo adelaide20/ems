@@ -25,7 +25,13 @@ content-type: application/json
 
 {
     "first_name": "adel",
-    "last_name": "madisha",
-    "email": "adwsel@ems.com",
+    "last_name": "kholza",
+    "email": "adel@ems.com",
+    "gender": "male",
     "contactno": "0987654321"
 }
+
+
+
+### list all employees
+GET http://localhost:8000/api/list
