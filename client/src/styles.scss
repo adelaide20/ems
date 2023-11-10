@@ -1,2 +1,29 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 $utilities: map-merge( $utilities, ( "cursor": ( property: cursor, class: cursor, responsive: true, values: auto pointer grab, )));
+.colors {
+    headings: #294770;
+    button: #518be0;
+    input: #eff1f7;
+    text: #85a5d2;
+}
+
+body {
+    background-color: #f7f9fd;
+}
+
+.button {
+    background-color: #f7f9fd;
+    color: #518be0;
+    border: #518be0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+// .button {
+//     background-color: #518be0;
+//     color: #f7f9fd;
+//     border: none;
+//     text-align: center;
+//     text-decoration: none;
+// }

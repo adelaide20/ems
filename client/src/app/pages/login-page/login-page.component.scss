@@ -1,0 +1,10 @@
+.row {
+    margin: 10rem 0;
+}
+
+// desktop
+@media only screen and (min-width: 768px) {
+    .row {
+        margin: 20rem 0;
+    }
+}
