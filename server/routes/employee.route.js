@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { newEmployee, allEmployees } = require('../controllers/employee')
-const { addDetails, allDetails, oneEmployee } = require('../controllers/employment')
+const { addDetails, allDetails, oneEmployee, updateDetails } = require('../controllers/employment')
 
 // ########## Employee Routes ########## //
 
@@ -23,6 +23,10 @@ router.get('/list', allDetails);
 
 // list employees with their employment details
 router.get('/one/:emp_id', oneEmployee);
+
+
+// update employee details
+router.put('/update/:emp_id', updateDetails);
 
 
 

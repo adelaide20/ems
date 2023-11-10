@@ -52,4 +52,25 @@ content-type: application/json
 
 
 ### list all employees and their employment details
-GET http://localhost:8000/api/one/2
+GET http://localhost:8000/api/list
+
+
+
+### one employee and their employment details
+GET http://localhost:8000/api/one/1
+
+
+
+### edit/update employee and their employment details
+PUT http://localhost:8000/api/update/1
+content-type: application/json
+
+{
+    "position": "technician",
+    "emp_status": "active",
+    "salary": 3500.00
+}
+
+
+### remove/delete an employee
+GET http://localhost:8000/api/remove/2

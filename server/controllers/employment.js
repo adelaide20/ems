@@ -18,38 +18,39 @@ exports.addDetails = async(request, response) => {
             status: 'Failed',
             message: 'All fields must be provided.'
         })
-    }
+    } else {
+        try {
 
-    try {
+            // check if employee exists
+            const checkEmployee = await pool.query(
+                `SELECT * FROM employees WHERE emp_id = $1`, [details.employee]
+            );
 
-        // check if employee exists
-        const checkEmployee = await pool.query(
-            `SELECT * FROM employees WHERE emp_id = $1`, [details.employee]
-        );
-
-        // respose if the employee exists
-        if (checkEmployee.rows.length <= 0) {
-            response.status(401).send({
-                status: 'Failed',
-                message: 'Employee does not exist'
+            // respose if the employee exists
+            if (checkEmployee.rows.length <= 0) {
+                response.status(401).send({
+                    status: 'Failed',
+                    message: 'Employee does not exist'
+                });
+            } else {
+                // add employment details
+                pool.query(`INSERT INTO employment (employee, position, start_date, salary) 
+                VALUES ($1, $2, $3, $4) RETURNING *`, [details.employee, details.position, details.start_date, details.salary],
+                    (error, results) => {
+                        if (error) {
+                            throw error
+                        }
+                        response.status(201).send('Employment details added successfully')
+                    })
+            }
+        } catch (error) {
+            response.status(400).json({
+                message: "Failed to add employment details",
+                error: error
             });
-        } else {
-            // add employment details
-            pool.query(`INSERT INTO employment (employee, position, start_date, salary) 
-            VALUES ($1, $2, $3, $4) RETURNING *`, [details.employee, details.position, details.start_date, details.salary],
-                (error, results) => {
-                    if (error) {
-                        throw error
-                    }
-                    response.status(201).send('Employment details added successfully')
-                })
         }
-    } catch (error) {
-        response.status(400).json({
-            message: "Failed to add employment details",
-            error: error
-        });
     }
+
 
 
 }
@@ -105,4 +106,60 @@ exports.oneEmployee = (request, response) => {
         });
     }
 
+}
+
+
+// update/edit employee and their details
+exports.updateDetails = (request, response) => {
+
+    const emp_id = request.params.emp_id;
+
+    const details = {
+        position: request.body.position,
+        emp_status: request.body.emp_status,
+        salary: request.body.salary,
+        end_date: request.body.end_date
+    }
+
+    try {
+        pool.query(`UPDATE employment
+        SET position = $1, emp_status = $2, salary = $3, end_date = $4
+        WHERE employee = ${emp_id}`, [details.position, details.emp_status, details.salary, details.end_date],
+            (error, results) => {
+                if (error) {
+                    throw error;
+                }
+                response.status(200).json("Employee details modified");
+            }
+        );
+    } catch (error) {
+        response.status(400).json({
+            message: "Failed to modify employee details",
+            error: error
+        });
+    }
+}
+
+
+// delete an employee
+exports.deleteEmployee = (request, response) => {
+    const emp_id = request.params.emp_id;
+
+    try {
+        pool.query(`UPDATE employment
+        SET visibility = 'false'
+        WHERE employee = ${emp_id}`,
+            (error, results) => {
+                if (error) {
+                    throw error;
+                }
+                response.status(200).json("Employee removed");
+            }
+        );
+    } catch (error) {
+        response.status(400).json({
+            message: "Failed to remove employee",
+            error: error
+        });
+    }
 }
