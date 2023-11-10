@@ -18,14 +18,24 @@ exports.setAdmin = async(request, response) => {
             // hashing the password
         password = await bcrypt.hash(admin[0].password, salt)
 
-        // insert the admin details into the table/db
-        pool.query(`INSERT INTO users (name, email, password) 
-            VALUES ($1, $2, $3) RETURNING *`, [admin[0].name, admin[0].email, password], (error, results) => {
-            if (error) {
-                throw error
-            }
-            response.status(201).send(`Admin added succesfuly`)
-        })
+        const user = await pool.query(`SELECT * FROM users WHERE email = $1 `, [admin[0].email]);
+
+        if (user) {
+            response.status(400).send({
+                status: 'Failed',
+                message: 'email already exists.'
+            })
+        } else {
+            // insert the admin details into the table/db
+            pool.query(`INSERT INTO users (name, email, password) 
+                VALUES ($1, $2, $3) RETURNING *`, [admin[0].name, admin[0].email, password], (error, results) => {
+                if (error) {
+                    throw error
+                }
+                response.status(201).send(`Admin added succesfuly`)
+            })
+        }
+
     } else {
         response.status(400).send(`The file doesn't have data`)
     }

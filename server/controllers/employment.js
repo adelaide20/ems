@@ -33,15 +33,30 @@ exports.addDetails = async(request, response) => {
                     message: 'Employee does not exist'
                 });
             } else {
-                // add employment details
-                pool.query(`INSERT INTO employment (employee, position, start_date, salary) 
-                VALUES ($1, $2, $3, $4) RETURNING *`, [details.employee, details.position, details.start_date, details.salary],
-                    (error, results) => {
-                        if (error) {
-                            throw error
-                        }
-                        response.status(201).send('Employment details added successfully')
-                    })
+
+                // check if employee details has already been added 
+                const checkdetails = await pool.query(
+                    `SELECT * FROM employment WHERE employee = $1`, [details.employee]
+                );
+
+                // respose if the employee exists
+                if (checkdetails.rows.length > 0) {
+                    response.status(401).send({
+                        status: 'Failed',
+                        message: 'Employee details already added'
+                    });
+                } else {
+                    // add employment details
+                    pool.query(`INSERT INTO employment (employee, position, start_date, salary) 
+                        VALUES ($1, $2, $3, $4) RETURNING *`, [details.employee, details.position, details.start_date, details.salary],
+                        (error, results) => {
+                            if (error) {
+                                throw error
+                            }
+                            response.status(201).send('Employment details added successfully')
+                        })
+                }
+
             }
         } catch (error) {
             response.status(400).json({
