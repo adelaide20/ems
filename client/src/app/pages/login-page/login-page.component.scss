@@ -2,7 +2,28 @@
     margin: 10rem 0;
 }
 
-// desktop
+.button {
+    background-color: #ffffff;
+    color: #518be0;
+    padding: 0.25rem 1rem;
+    border: #518be0 solid 2px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover,
+.button:focus,
+.button:active {
+    padding: 0.25rem 1rem;
+    border: #518be0 solid 2px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #518be0;
+    color: #f7f9fd;
+}
+
 @media only screen and (min-width: 768px) {
     .row {
         margin: 20rem 0;

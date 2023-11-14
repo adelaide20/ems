@@ -9,7 +9,7 @@ const config = require("../config/auth.config")
 exports.setAdmin = async(request, response) => {
 
     // file holding the admin details
-    const admin = JSON.parse(fs.readFileSync("/Users/adelaide/Desktop/ems/server/db/auth.db.js", 'utf-8'))
+    const admin = JSON.parse(fs.readFileSync("/Users/adelaide/Desktop/ems/server/db/admin.db.js", 'utf-8'))
 
     // checking if the file is not empty
     if (admin.length > 0) {
@@ -85,6 +85,7 @@ exports.login = async(request, response) => {
                 });
                 response.status(200).json({
                     message: "Signed in successfully!",
+                    name: user.rows[0].name,
                     token: token,
                 });
             } else {
