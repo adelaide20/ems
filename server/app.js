@@ -4,17 +4,27 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
+var cors = require('cors')
+
+var corsOptions = {
+    origin: '*',
+    allowCredentials: "true",
+    optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
+
 const port = process.env.PORT || 3000
 
 app.use(express.json());
 
 app.use(bodyParser.json())
 app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
-)
-// importing db configuration
+        bodyParser.urlencoded({
+            extended: true,
+        })
+    )
+    // importing db configuration
 require('./config/db.config')
 
 // basic route
