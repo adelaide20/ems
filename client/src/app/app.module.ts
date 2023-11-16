@@ -15,7 +15,7 @@ import { NotfoundPageComponent } from './pages/notfound-page/notfound-page.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HeaderComponent } from './ui/header/header.component';
 import { ListComponent } from './ui/list/list.component';
-import { CreateComponent } from './ui/create/create.component';
+import { CreateComponent } from './pages/create/create.component';
 import { SearchComponent } from './ui/search/search.component';
 
 

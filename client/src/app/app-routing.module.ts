@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PrivatePagesComponent } from './layout/private-pages/private-pages.component';
+import { CreateComponent } from './pages/create/create.component';
 import { DashboardPagesComponent } from './pages/dashboard-pages/dashboard-pages.component';
 import { EmployeePageComponent } from './pages/employee-page/employee-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: 'private', component: PrivatePagesComponent, children: [
       { path: 'dash', component: DashboardPagesComponent },
+      { path: 'create', component: CreateComponent },
       { path: 'employee/:emp_id', component: EmployeePageComponent },
       { path: '', redirectTo: '/dash', pathMatch: 'full' },
     ]

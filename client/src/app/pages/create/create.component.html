@@ -1,0 +1,37 @@
+<!-- stepper.component.html -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" [style.width.%]="(currentStep - 1) * 33.33" [attr.aria-valuenow]="(currentStep - 1) * 33.33" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+            </div>
+            <div class="card mt-3 ">
+                <div class="card-body ">
+                    <ng-container [ngSwitch]="currentStep ">
+                        <!-- Step 1 -->
+                        <div *ngSwitchCase="1 ">
+                            <h5 class="card-title ">Step 1</h5>
+                            <p class="card-text ">Step 1 content</p>
+                            <button class="btn btn-primary " (click)="nextStep() ">Next</button>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div *ngSwitchCase="2 ">
+                            <h5 class="card-title ">Step 2</h5>
+                            <p class="card-text ">Step 2 content</p>
+                            <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
+                            <button class="btn btn-primary " (click)="nextStep() ">Next</button>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div *ngSwitchCase="3 ">
+                            <h5 class="card-title ">Step 3</h5>
+                            <p class="card-text ">Step 3 content</p>
+                            <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
