@@ -1,37 +1,72 @@
 <!-- stepper.component.html -->
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-8">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" [style.width.%]="(currentStep - 1) * 33.33" [attr.aria-valuenow]="(currentStep - 1) * 33.33" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
-            </div>
-            <div class="card mt-3 ">
-                <div class="card-body ">
-                    <ng-container [ngSwitch]="currentStep ">
-                        <!-- Step 1 -->
-                        <div *ngSwitchCase="1 ">
-                            <h5 class="card-title ">Step 1</h5>
-                            <p class="card-text ">Step 1 content</p>
-                            <button class="btn btn-primary " (click)="nextStep() ">Next</button>
-                        </div>
+        <!-- <div class="col-8"> -->
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" [style.width.%]="(currentStep - 1) * 50" [attr.aria-valuenow]="(currentStep - 1) * 33.33" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+        </div>
+        <div class="card mt-3 ">
+            <div class="card-body ">
+                <ng-container [ngSwitch]="currentStep ">
+                    <!-- Step 1 -->
+                    <div *ngSwitchCase="1 ">
+                        <h5 class="card-title ">Step 1: Personal Details</h5>
 
-                        <!-- Step 2 -->
-                        <div *ngSwitchCase="2 ">
-                            <h5 class="card-title ">Step 2</h5>
-                            <p class="card-text ">Step 2 content</p>
-                            <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
-                            <button class="btn btn-primary " (click)="nextStep() ">Next</button>
-                        </div>
+                        <form [formGroup]="employeeForm" class="" autocomplete="off">
+                            <div class="mt-3">
+                                <input type="text" formControlName="first_name" class="form-control" placeholder="First Name" required>
+                            </div>
+                            <div class="mt-3">
+                                <input type="text" formControlName="last_name" class="form-control" placeholder="last Name" required>
+                            </div>
+                            <div class="mt-3">
+                                <input type="email" formControlName="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                            <div class="mt-3">
+                                <input type="text" formControlName="gender" class="form-control" placeholder="Gender" required>
+                            </div>
+                            <div class="mt-3">
+                                <input type="number" formControlName="gender" class="form-control" placeholder="Gender" required>
+                            </div>
+                            <div class="mt-3 text-center ">
+                                <button class="button" (click)="nextStep() ">Next</button>
+                            </div>
+                        </form>
+                    </div>
 
-                        <!-- Step 3 -->
-                        <div *ngSwitchCase="3 ">
-                            <h5 class="card-title ">Step 3</h5>
-                            <p class="card-text ">Step 3 content</p>
-                            <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
-                        </div>
-                    </ng-container>
-                </div>
+                    <!-- Step 2 -->
+                    <div *ngSwitchCase="2 ">
+                        <h5 class="card-title ">Step 2: Employment Details</h5>
+
+                        <form [formGroup]="employmentForm" class="" autocomplete="off">
+                            <div class="mt-3">
+                                <label for="email " class="form-label ">Email</label>
+                                <input type="email " formControlName="email " class="form-control " id="email " required>
+                            </div>
+                            <div class="mt-3">
+                                <label for="password " class="form-label ">Password</label>
+                                <input type="password " formControlName="password " class="form-control " id="password " required>
+                            </div>
+
+                            <div class="mt-3 text-center ">
+                                <button class="button " type="submit ">Login</button>
+                            </div>
+                        </form>
+
+                        <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
+                        <button class="btn btn-primary " (click)="nextStep() ">Next</button>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div *ngSwitchCase="3 ">
+                        <h5 class="card-title ">Step 3: Review</h5>
+                        <p class="card-text ">Step 3 content</p>
+                        <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
+                        <button class="btn btn-primary " (click)="nextStep() ">Save</button>
+                    </div>
+                </ng-container>
             </div>
         </div>
+        <!-- </div> -->
     </div>
 </div>
