@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'private', component: PrivatePagesComponent, children: [
       { path: 'dash', component: DashboardPagesComponent },
-      { path: 'employee', component: EmployeePageComponent },
+      { path: 'employee/:emp_id', component: EmployeePageComponent },
       { path: '', redirectTo: '/dash', pathMatch: 'full' },
     ]
   },

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EmployeesService } from 'src/app/services/employees.service';
+import { Employees } from '../../interfaces/employees';
 
 @Component({
   selector: 'app-list',
@@ -7,12 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  items:any = [1, 2, 3]
+  @Input() emp_id: any = '';
+  employees: Employees[] = []  // variables holding all the employees
 
 
-  constructor() { }
+  constructor(private employeeServ: EmployeesService, private router:Router) { }
 
   ngOnInit(): void {
+    // get all aployees
+    this.employeeServ.getAllEmployees().subscribe((data:any)=>{
+      this.employees = data
+      console.log(data);
+
+    })
+  }
+
+
+  // view employee details
+  viewEmp(emp_id:any) {
+    let url = 'private/employee/' + emp_id
+    this.router.navigate([url])
   }
 
 }
