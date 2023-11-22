@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert.service';
+import { EmployeesService } from 'src/app/services/employees.service';
 
 @Component({
   selector: 'app-create',
@@ -24,7 +26,7 @@ export class CreateComponent implements OnInit {
   });
 
 
-  constructor() { }
+  constructor(private alert: AlertService, private empServ: EmployeesService) { }
 
   ngOnInit(): void {
   }
@@ -38,4 +40,32 @@ export class CreateComponent implements OnInit {
     this.currentStep--;
   }
 
+
+  // creating an employee
+  createEmployee() {
+
+    if (!this.employeeForm.valid) {
+      this.alert.error('All fileds are required');
+      return;
+    }
+
+    // user object
+    let employee = {
+      first_name: this.employeeForm.value.first_name,
+      last_name: this.employeeForm.value.last_name,
+      email: this.employeeForm.value.email,
+      gender: this.employeeForm.value.gender,
+      contactno: this.employeeForm.value.contactno
+    };
+
+
+
+
+  }
+
+
+  // adding the empoyment details for an employee
+  empDetails() {
+
+  }
 }

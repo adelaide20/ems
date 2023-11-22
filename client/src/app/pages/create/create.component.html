@@ -26,7 +26,7 @@
                                 <input type="text" formControlName="gender" class="form-control" placeholder="Gender" required>
                             </div>
                             <div class="mt-3">
-                                <input type="number" formControlName="gender" class="form-control" placeholder="Gender" required>
+                                <input type="number" formControlName="contactno" class="form-control" placeholder="Contact Number" required>
                             </div>
                             <div class="mt-3 text-center ">
                                 <button class="button" (click)="nextStep() ">Next</button>
@@ -40,21 +40,20 @@
 
                         <form [formGroup]="employmentForm" class="" autocomplete="off">
                             <div class="mt-3">
-                                <label for="email " class="form-label ">Email</label>
-                                <input type="email " formControlName="email " class="form-control " id="email " required>
+                                <input type="text" formControlName="position" class="form-control" placeholder="Position" required>
                             </div>
                             <div class="mt-3">
-                                <label for="password " class="form-label ">Password</label>
-                                <input type="password " formControlName="password " class="form-control " id="password " required>
+                                <input type="date" formControlName="start_date" class="form-control" placeholder="Start Date" required>
+                            </div>
+                            <div class="mt-3">
+                                <input type="number" formControlName="salary" class="form-control" placeholder="Salary" required>
                             </div>
 
                             <div class="mt-3 text-center ">
-                                <button class="button " type="submit ">Login</button>
+                                <button class="button prev" (click)="prevStep() ">Back</button>
+                                <button class="button" (click)="nextStep() ">Next</button>
                             </div>
                         </form>
-
-                        <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
-                        <button class="btn btn-primary " (click)="nextStep() ">Next</button>
                     </div>
 
                     <!-- Step 3 -->
