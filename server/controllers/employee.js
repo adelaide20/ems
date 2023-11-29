@@ -40,7 +40,10 @@ exports.newEmployee = async(request, response) => {
                         if (error) {
                             throw error
                         }
-                        response.status(201).send('Employee added successfully')
+                        response.status(201).json({
+                            message: 'Employee added successfully',
+                            res: results.rows
+                        })
                     })
             }
 

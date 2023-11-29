@@ -95,9 +95,18 @@
                     <!-- ***** Step 3 ***** -->
                     <div *ngSwitchCase="3 ">
                         <h5 class="card-title ">Step 3: Review</h5>
-                        <p class="card-text ">Step 3 content</p>
+
+
+                        <p>Full Name: {{employee.res[0].first_name | titlecase}} {{employee.last_name | titlecase}}</p>
+                        <p>Email: {{employee.res[0].email}}</p>
+                        <p>Gender: {{employee.res[0].gender | titlecase}}</p>
+                        <p>Contact No.: {{employee.res[0].contactno}}</p>
+                        <p>Position: {{details.position | titlecase}}</p>
+                        <p>Start Date: {{details.start_date}}</p>
+                        <p>Salary: {{details.salary }}</p>
+
                         <button class="btn btn-secondary " (click)="prevStep() ">Back</button>
-                        <button class="btn btn-primary " (click)="nextStep() ">Save</button>
+                        <button class="btn btn-primary " (click)="save() ">Save</button>
                     </div>
                 </ng-container>
             </div>

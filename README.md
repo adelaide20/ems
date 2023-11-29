@@ -13,4 +13,10 @@ npm run app
 
 
 ### running the client app
-ng serve --o
+ng serve --
+
+
+
+### Login details
+email: admin@ems.com
+password: admin123

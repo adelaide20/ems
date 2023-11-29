@@ -53,7 +53,10 @@ exports.addDetails = async(request, response) => {
                             if (error) {
                                 throw error
                             }
-                            response.status(201).send('Employment details added successfully')
+                            response.status(201).json({
+                                message: 'Employment details added successfully',
+                                res: results
+                            })
                         })
                 }
 

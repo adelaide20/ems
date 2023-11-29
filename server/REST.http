@@ -43,8 +43,8 @@ POST http://localhost:8000/api/employ
 content-type: application/json
 
 {
-    "employee": 2,
-    "position": "marketing",
+    "employee": 1,
+    "position": "technician",
     "start_date": "1/11/2023",
     "salary": 5000
 }

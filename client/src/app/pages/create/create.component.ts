@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Employees } from 'src/app/interfaces/employees';
 import { AlertService } from 'src/app/services/alert.service';
 import { EmployeesService } from 'src/app/services/employees.service';
 
@@ -11,8 +12,8 @@ import { EmployeesService } from 'src/app/services/employees.service';
 })
 export class CreateComponent implements OnInit {
 
-  emp_id: any;
-
+  employee: any;
+  details: any;
 
   employeeForm = new FormGroup({
     first_name: new FormControl(''),
@@ -32,6 +33,8 @@ export class CreateComponent implements OnInit {
   constructor(private alert: AlertService, private empServ: EmployeesService, private router: Router) { }
 
   ngOnInit(): void {
+
+
   }
   currentStep: number = 1;
 
@@ -66,7 +69,6 @@ export class CreateComponent implements OnInit {
       (res: any) => {
         this.alert.success(res.message)
         localStorage.setItem('employee', JSON.stringify(res));
-        console.log(res.res[0].emp_id);
         this.nextStep()
       },
       (error) => {
@@ -86,32 +88,37 @@ export class CreateComponent implements OnInit {
       return;
     }
 
-    const employee = JSON.parse(localStorage.getItem('employee') || '');
+    this.employee = JSON.parse(localStorage.getItem('employee') || '');
 
     // user object
     let employment = {
-      emp_id: employee.res[0].emp_id,
+      employee: this.employee.res[0].emp_id,
       position: this.employmentForm.value.position,
       start_date: this.employmentForm.value.start_date,
       salary: this.employmentForm.value.salary
     };
 
 
-    localStorage.setItem('details', JSON.stringify(employment));
+    this.details = employment
+
+    this.alert.success("Details successfully added")
+
     this.nextStep()
+
   }
 
 
 
-  save(){
+  save() {
 
-    const details = JSON.parse(localStorage.getItem('details') || '');
+   console.log(this.details);
+   
 
-       this.empServ.addDetails(details).subscribe(
+    this.empServ.addDetails(this.details).subscribe(
       (res: any) => {
         this.alert.success(res.message)
-       
-        console.log(res.res[0].emp_id);
+
+        console.log("hey hey heeey");
         this.router.navigate(['private/dash'])
       },
       (error) => {
@@ -121,6 +128,6 @@ export class CreateComponent implements OnInit {
     )
 
   }
- 
-  
+
+
 }
