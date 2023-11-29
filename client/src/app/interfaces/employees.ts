@@ -1,5 +1,5 @@
 export interface Employees {
-    emp_id?: string;
+    emp_id?: number;
     first_name?: string;
     last_name?: string;
     email?: string;
@@ -10,4 +10,3 @@ export interface Employees {
     start_date?: string;
     salary?: string;
 }
-

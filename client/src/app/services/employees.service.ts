@@ -17,8 +17,14 @@ export class EmployeesService {
   }
 
 
-   // get all the employees
+   // add an employee
    addEmployee(employee: Employees){
     return this.http.post(`${environment.SERVER_URL}` + '/api/new', employee);
    }
+
+ // add employee employement details
+ addDetails(employee: Employees){
+  return this.http.post(`${environment.SERVER_URL}` + '/api/employ', employee);
+ }
+
 }

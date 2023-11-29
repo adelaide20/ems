@@ -8,55 +8,91 @@
         <div class="card mt-3 ">
             <div class="card-body ">
                 <ng-container [ngSwitch]="currentStep ">
-                    <!-- Step 1 -->
+                    <!-- ***** Step 1 ****** -->
                     <div *ngSwitchCase="1 ">
                         <h5 class="card-title ">Step 1: Personal Details</h5>
 
                         <form [formGroup]="employeeForm" class="" autocomplete="off">
-                            <div class="mt-3">
-                                <input type="text" formControlName="first_name" class="form-control" placeholder="First Name" required>
+                            <!-- names input -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mt-3">
+                                        <input type="text" formControlName="first_name" class="form-control" placeholder="First Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mt-3">
+                                        <input type="text" formControlName="last_name" class="form-control" placeholder="last Name" required>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- email input -->
                             <div class="mt-3">
-                                <input type="text" formControlName="last_name" class="form-control" placeholder="last Name" required>
+                                <input type="email" formControlName="email" class="form-control" placeholder="email@ems.com" required>
                             </div>
-                            <div class="mt-3">
-                                <input type="email" formControlName="email" class="form-control" placeholder="Email Address" required>
+
+                            <!-- gender input -->
+                            <div class="mt-3 border rounded">
+
+                                <label class="label">Gender</label>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" formControlName="gender" value="Female" checked>
+                                    <label class="form-check-label" for="inlineRadio1">Femele</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" formControlName="gender" value="Male">
+                                    <label class="form-check-label" for="inlineRadio2">Male</label>
+                                </div>
+
                             </div>
+
+                            <!-- contact input -->
                             <div class="mt-3">
-                                <input type="text" formControlName="gender" class="form-control" placeholder="Gender" required>
-                            </div>
-                            <div class="mt-3">
-                                <input type="number" formControlName="contactno" class="form-control" placeholder="Contact Number" required>
+                                <input type="number" pattern=".{9,10}" formControlName="contactno" class="form-control" placeholder="Contact Number" required>
                             </div>
                             <div class="mt-3 text-center ">
-                                <button class="button" (click)="nextStep() ">Next</button>
+                                <button class="button" (click)="createEmployee() ">Next</button>
                             </div>
                         </form>
                     </div>
 
-                    <!-- Step 2 -->
+                    <!-- ***** Step 2 ***** -->
                     <div *ngSwitchCase="2 ">
                         <h5 class="card-title ">Step 2: Employment Details</h5>
 
                         <form [formGroup]="employmentForm" class="" autocomplete="off">
-                            <div class="mt-3">
+                            <!-- <div class="mt-3">
                                 <input type="text" formControlName="position" class="form-control" placeholder="Position" required>
-                            </div>
+                            </div> -->
+
+
+                            <select class="form-select mt-3" formControlName="position" required>
+                                <option selected>Position</option>
+                                <option value="Developer">Developer</option>
+                                <option value="Technicial">Technicial</option>
+                                <option value="Tester">Tester</option>
+                              </select>
+
+
+
+
                             <div class="mt-3">
                                 <input type="date" formControlName="start_date" class="form-control" placeholder="Start Date" required>
                             </div>
                             <div class="mt-3">
-                                <input type="number" formControlName="salary" class="form-control" placeholder="Salary" required>
+                                <input type="number" pattern=".{3,7}" formControlName="salary" class="form-control" placeholder="Salary" required>
                             </div>
 
                             <div class="mt-3 text-center ">
                                 <button class="button prev" (click)="prevStep() ">Back</button>
-                                <button class="button" (click)="nextStep() ">Next</button>
+                                <button class="button" (click)="empDetails()">Next</button>
                             </div>
                         </form>
                     </div>
 
-                    <!-- Step 3 -->
+                    <!-- ***** Step 3 ***** -->
                     <div *ngSwitchCase="3 ">
                         <h5 class="card-title ">Step 3: Review</h5>
                         <p class="card-text ">Step 3 content</p>
