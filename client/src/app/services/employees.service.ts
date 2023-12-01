@@ -27,4 +27,9 @@ export class EmployeesService {
   return this.http.post(`${environment.SERVER_URL}` + '/api/employ', employee);
  }
 
+   // get employee by id
+   getEmployeeById(emp_id: any) {
+    return this.http.get(`${environment.SERVER_URL}` + '/api/one/' + emp_id)
+  }
+
 }
