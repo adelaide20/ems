@@ -9,4 +9,5 @@ export interface Employees {
     emp_status?: string;
     start_date?: string;
     salary?: string;
+    end_date?: string;
 }

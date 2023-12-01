@@ -8,29 +8,25 @@
 
         <!-- name -->
         <div class="col-md-6 mt-3">
-            <h4>Name Last</h4>
-            <h6>Position</h6>
+            <h4>{{employee?.first_name |titlecase }} {{employee?.last_name |titlecase}}</h4>
+            <h6>{{employee?.position |titlecase }}</h6>
         </div>
 
         <!-- action -->
         <div class="col-md-3 d-flex justify-content-end align-items-center">
-            <button class="button" type="submit"><p class="dot">...</p></button>
-
+            <button class="button" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </div>
     </div>
-
-
-
 
 
     <div class="row ">
 
         <div class="col-md-6 border border-1">
-            <i class="fa fa-mobile" aria-hidden="true"></i> contactno
+            <i class="fa fa-mobile" aria-hidden="true"></i> {{employee?.contactno }}
         </div>
 
         <div class="col-md-6 border border-1 ">
-            <i class="fa fa-envelope-o" aria-hidden="true"></i> email
+            <i class="fa fa-envelope-o" aria-hidden="true"></i> {{employee?.email }}
         </div>
 
 
@@ -53,60 +49,83 @@
     <label for="tab3">Leaves</label>
 
     <div class="tab__content">
-        <h3>General Information</h3>
+        <h4>General Information</h4>
         <div class="row">
 
             <div class="col-md-6">
-                <span>joining date</span>
-                <p></p>
+                <span>Employment ID</span>
+                <p>{{employee?.emp_id }}</p>
             </div>
 
             <div class="col-md-6">
                 <span>Position</span>
+                <p>{{employee?.position }}</p>
             </div>
 
             <div class="col-md-6">
                 <span>Manager</span>
+                <p>Adelaide</p>
             </div>
             <div class="col-md-6">
                 <span>Employment Type</span>
+                <p>Hybrid</p>
             </div>
         </div>
 
         <hr>
 
-        <h3>Contract Information</h3>
+        <h4>Contract Information</h4>
         <div class="row">
 
             <div class="col-md-6">
                 <span>contract type</span>
+                <p>full time</p>
             </div>
 
             <div class="col-md-6">
                 <span>Salary</span>
+                <p>{{employee?.salary |currency:'R '}}</p>
             </div>
 
             <div class="col-md-6">
                 <span>Start Date</span>
+                <p>{{employee?.start_date |date }}</p>
             </div>
             <div class="col-md-6">
                 <span>End Date</span>
+                <p *ngIf="employee?.end_date === null">not specified</p>
+                <p *ngIf="!employee?.end_date === null">{{employee?.email }}</p>
             </div>
         </div>
 
 
-        <p>Praesent nonummy mi in odio. Nullam accumsan lorem in dui. Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl. Nullam accumsan lorem in dui. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
     </div>
 
     <div class="tab__content">
-        <h3>Documents</h3>
-        <p>Praesent nonummy mi in odio. Nullam accumsan lorem in dui. Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl. Nullam accumsan lorem in dui. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+        <h4>Documents</h4>
 
-        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Morbi mattis ullamcorper velit. Pellentesque posuere. Etiam ut purus mattis mauris sodales aliquam. Praesent nec nisl a purus blandit viverra.</p>
+        <div class="row">
+
+            <div class="col-md-6">
+                <span>ID/Passport</span>
+                <p></p>
+            </div>
+
+            <div class="col-md-6">
+                <span>Highest Qualification</span>
+            </div>
+
+            <div class="col-md-6">
+                <span>Contract</span>
+            </div>
+            <div class="col-md-6">
+                <span>Resume</span>
+            </div>
+        </div>
     </div>
 
     <div class="tab__content">
-        <h3>Leaves</h3>
+        <h4>Leaves</h4>
         <p>Praesent nonummy mi in odio. Nullam accumsan lorem in dui. Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl. Nullam accumsan lorem in dui. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
 
         <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Morbi mattis ullamcorper velit. Pellentesque posuere. Etiam ut purus mattis mauris sodales aliquam. Praesent nec nisl a purus blandit viverra.</p>

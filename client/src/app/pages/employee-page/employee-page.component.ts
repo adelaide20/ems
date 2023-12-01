@@ -12,15 +12,17 @@ export class EmployeePageComponent implements OnInit {
 
   employee: Employees | undefined;
 
-  emp_id:any;
 
   constructor(private empserv: EmployeesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.emp_id = this.route.snapshot.paramMap.get('emp_id') || '';
+   const emp_id = this.route.snapshot.paramMap.get('emp_id') || '';
 
-    this.empserv.getEmployeeById(this.emp_id).subscribe((data: any) => {
+    this.empserv.getEmployeeById(emp_id).subscribe((data: any) => {
       this.employee = data[0]
+      
+      console.log(this.employee);
+      
     })
 
   }

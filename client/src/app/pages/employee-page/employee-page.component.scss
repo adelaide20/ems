@@ -114,9 +114,11 @@
     background-color: #fff;
     box-shadow: 0 -1px 0 #fff inset;
     cursor: default;
+    color: #508be0;
 }
 
 .tab:checked+label:hover {
+    color: #508be0;
     box-shadow: 0 -1px 0 #fff inset;
     background-color: #fff;
 }
@@ -127,12 +129,12 @@
     cursor: pointer;
     display: block;
     text-decoration: none;
-    color: #333;
     -webkit-box-flex: 3;
     -ms-flex-positive: 3;
+    color: #e5eaf6;
     flex-grow: 3;
     text-align: center;
-    background-color: #f2f2f2;
+    background-color: #508be0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -146,6 +148,7 @@
 }
 
 .tab+label:hover {
+    color: #508be0;
     background-color: #f9f9f9;
     box-shadow: 0 1px 0 #f4f4f4 inset;
 }
