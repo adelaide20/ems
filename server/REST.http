@@ -57,7 +57,7 @@ GET http://localhost:8000/api/list
 
 
 ### one employee and their employment details
-GET http://localhost:8000/api/one/1
+GET http://localhost:8000/api/one/2
 
 
 
@@ -73,4 +73,4 @@ content-type: application/json
 
 
 ### remove/delete an employee
-GET http://localhost:8000/api/remove/2
+GET http://localhost:8000/api/remove/12
