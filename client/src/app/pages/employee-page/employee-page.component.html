@@ -13,8 +13,11 @@
         </div>
 
         <!-- action -->
-        <div class="col-md-3 d-flex justify-content-end align-items-center">
-            <button class="button" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        <div class="col-md-3 d-flex justify-content-end align-items-center gap-1">
+            <!-- edit -->
+            <button class="button" type="submit" (click)="deleteEmployee()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <!-- delete -->
+            <button class="button" type="submit" (click)="deleteEmployee()"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </div>
     </div>
 
@@ -128,11 +131,6 @@
         <h4>Leaves</h4>
         <p>Praesent nonummy mi in odio. Nullam accumsan lorem in dui. Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl. Nullam accumsan lorem in dui. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
 
-        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Morbi mattis ullamcorper velit. Pellentesque posuere. Etiam ut purus mattis mauris sodales aliquam. Praesent nec nisl a purus blandit viverra.</p>
-
-        <p>Praesent nonummy mi in odio. Nullam accumsan lorem in dui. Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl. Nullam accumsan lorem in dui. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-
-        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Morbi mattis ullamcorper velit. Pellentesque posuere. Etiam ut purus mattis mauris sodales aliquam. Praesent nec nisl a purus blandit viverra.</p>
     </div>
 
 </div>

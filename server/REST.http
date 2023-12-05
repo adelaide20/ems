@@ -73,4 +73,4 @@ content-type: application/json
 
 
 ### remove/delete an employee
-GET http://localhost:8000/api/remove/12
+GET http://localhost:8000/api/remove/15
