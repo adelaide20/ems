@@ -14,6 +14,8 @@ export class ListComponent implements OnInit {
   employees: Employees[] = []  // variables holding all the employees
 
 
+  searchTerm = '';
+
   constructor(private employeeServ: EmployeesService, private router:Router) { }
 
   ngOnInit(): void {

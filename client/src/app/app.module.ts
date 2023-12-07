@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { HeaderComponent } from './ui/header/header.component';
 import { ListComponent } from './ui/list/list.component';
 import { CreateComponent } from './pages/create/create.component';
 import { SearchComponent } from './ui/search/search.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { SearchComponent } from './ui/search/search.component';
     ListComponent,
     CreateComponent,
     SearchComponent,
-    NotfoundPageComponent
+    NotfoundPageComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { SearchComponent } from './ui/search/search.component';
       positionClass: 'toast-top-right',
       preventDuplicates: true
     }),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
