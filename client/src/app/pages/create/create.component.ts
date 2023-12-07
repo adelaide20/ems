@@ -110,10 +110,6 @@ export class CreateComponent implements OnInit {
 
 
   save() {
-
-   console.log(this.details);
-   
-
     this.empServ.addDetails(this.details).subscribe(
       (res: any) => {
         this.alert.success(res.message)

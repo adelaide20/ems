@@ -23,9 +23,6 @@ export class EmployeePageComponent implements OnInit {
 
     this.empserv.getEmployeeById(this.emp_id).subscribe((data: any) => {
       this.employee = data[0]
-
-      console.log(this.employee);
-
     })
 
   }

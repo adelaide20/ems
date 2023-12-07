@@ -22,8 +22,6 @@ export class ListComponent implements OnInit {
     // get all aployees
     this.employeeServ.getAllEmployees().subscribe((data:any)=>{
       this.employees = data
-      console.log(data);
-
     })
   }
 
