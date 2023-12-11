@@ -15,9 +15,11 @@
         <!-- action -->
         <div class="col-md-3 d-flex justify-content-end align-items-center gap-1">
             <!-- edit -->
-            <button class="button" type="submit" (click)="deleteEmployee()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button class="button" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                    class="fa fa-pencil" aria-hidden="true"></i></button>
             <!-- delete -->
-            <button class="button" type="submit" (click)="deleteEmployee()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <button class="button" type="submit" (click)="deleteEmployee()"><i class="fa fa-trash"
+                    aria-hidden="true"></i></button>
         </div>
     </div>
 
@@ -133,4 +135,114 @@
 
     </div>
 
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="row">
+                        <!-- contact number -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Contact number</label>
+                                <input type="number" [value]="employee?.contactno" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- email -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Email</label>
+                                <input type="email" [value]="employee?.email" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- position -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Position</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected [value]="employee?.position"></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- manager -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Manager</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected ></option>
+                                    <option value="adelaide">Adelaide</option>
+                                    <option value="rorisang">Rorisang</option>
+                                    <option value="thondo">Thondo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- contract type -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Contract Type</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="full time">Full Time</option>
+                                    <option value="part time">Part Time</option>
+                                    <option value="contract">Contract</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- salary -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Salary</label>
+                                <input type="number" [value]="employee?.salary" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- employment type -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Contract Type</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected ></option>
+                                    <option value="hybrid">Hybrid</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- end date -->
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">End date</label>
+                                <input type="date" [value]="employee?.end_date" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>

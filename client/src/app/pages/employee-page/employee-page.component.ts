@@ -4,6 +4,8 @@ import { Employees } from 'src/app/interfaces/employees';
 import { EmployeesService } from 'src/app/services/employees.service';
 import Swal from 'sweetalert2'
 
+declare const bootstrap: any;
+
 @Component({
   selector: 'app-employee-page',
   templateUrl: './employee-page.component.html',
@@ -27,6 +29,12 @@ export class EmployeePageComponent implements OnInit {
 
   }
 
+
+  openModal() {
+    const modalElement = document.getElementById('exampleModal');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
 
 
   deleteEmployee() {
