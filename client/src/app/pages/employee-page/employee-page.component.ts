@@ -20,48 +20,12 @@ export class EmployeePageComponent implements OnInit {
 
   emp_id: any
 
-
-  // editForm = new FormGroup({
-  //   contactno: new FormControl(''),
-  //   email: new FormControl(''),
-  //   position: new FormControl(''),
-  //   salary: new FormControl(''),
-  //   end_date: new FormControl('')
-  // });
-
-  
-  editForm = {
-    contactno: '',
-    email: '',
-    position: '',
-    salary: '',
-    end_date: ''
-  };
-
   positions = [
     { value: 'developer', label: 'Developer' },
     { value: 'technician', label: 'Technician' },
     { value: 'tester', label: 'Tester' }
   ];
 
-  managers = [
-    { value: 'adelaide', label: 'Adelaide' },
-    { value: 'rorisang', label: 'Rorisang' },
-    { value: 'thondo', label: 'Thondo' }
-  ];
-
-
-  contracts = [
-    { value: 'full time', label: 'Full Time' },
-    { value: 'part time', label: 'Part Time' },
-    { value: 'contract', label: 'Contract' }
-  ];
-
-  employments = [
-    { value: 'hybrid', label: 'Hybrid' },
-    { value: 'remote', label: 'Remote' },
-    { value: 'onsite', label: 'Onsite' }
-  ];
 
 
   constructor(private alert: AlertService, private empserv: EmployeesService, private route: ActivatedRoute, private router: Router) { }
@@ -89,14 +53,13 @@ export class EmployeePageComponent implements OnInit {
 
      // user object
      let details = {
-      // contactno: this.editForm.value.contactno,
-      // email: this.editForm.value.email,
-      position: this.editForm.position,
-      salary: this.editForm.salary,
-      // end_date: this.editForm.value.end_date
+      // contactno: this.employee.value.contactno,
+      // email: this.employee.value.email,
+      position: this.employee.position,
+      salary: this.employee.salary,
+      // end_date: this.employee.value.end_date
     };
 
-console.log(details);
 
     this.empserv.updateEmployee(this.emp_id, details).subscribe((res:any)=>{
       console.log(res);

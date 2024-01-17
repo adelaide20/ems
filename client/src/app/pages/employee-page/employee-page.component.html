@@ -63,18 +63,20 @@
             </div>
 
             <div class="col-md-6">
-                <span>Position</span>
-                <p>{{employee?.position }}</p>
+                <span>Full Name</span>
+                <p>{{employee?.first_name |titlecase }} {{employee?.last_name |titlecase}}</p>
             </div>
 
             <div class="col-md-6">
-                <span>Manager</span>
-                <p>Adelaide</p>
+                <span>Position</span>
+                <p>{{employee?.position |titlecase }}</p>
             </div>
+            <!-- 
+           
             <div class="col-md-6">
                 <span>Employment Type</span>
                 <p>Hybrid</p>
-            </div>
+            </div> -->
         </div>
 
         <hr>
@@ -82,10 +84,10 @@
         <h4>Contract Information</h4>
         <div class="row">
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <span>contract type</span>
                 <p>full time</p>
-            </div>
+            </div> -->
 
             <div class="col-md-6">
                 <span>Salary</span>
@@ -98,8 +100,8 @@
             </div>
             <div class="col-md-6">
                 <span>End Date</span>
-                <p *ngIf="employee?.end_date === null">not specified</p>
-                <p *ngIf="!employee?.end_date === null">{{employee?.email }}</p>
+                <p *ngIf="employee?.end_date === null">Not specified</p>
+                <p *ngIf="!employee?.end_date === null">{{employee?.end_date }}</p>
             </div>
         </div>
 
@@ -175,32 +177,9 @@
                                 <select class="form-select" [(ngModel)]="employee.position" name="position">
                                     <option *ngFor="let option of positions" [value]="option.value">{{ option.label }}
                                     </option>
-                                </select>
-
+                                </select>w
                             </div>
                         </div>
-
-                        <!-- manager -->
-                        <!-- <div class="col-6">
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Manager</label>
-                                <select class="form-select" formControlName="position">
-                                    <option *ngFor="let option of managers" [value]="option.value">{{ option.label }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div> -->
-
-                        <!-- contract type -->
-                        <!-- <div class="col-6">
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Contract Type</label>
-                                <select class="form-select" formControlName="position">
-                                    <option *ngFor="let option of contracts" [value]="option.value">{{ option.label }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div> -->
 
                         <!-- salary -->
                         <div class="col-6">
@@ -210,23 +189,11 @@
                             </div>
                         </div>
 
-                        <!-- employment type -->
-                        <!-- <div class="col-6 ">
-                            <div class="mb-3 ">
-                                <label for="exampleInputPassword1 " class="form-label ">Employment Type</label>
-                                <select class="form-select " formControlName="position ">
-                                    <option *ngFor="let option of employments " [value]="option.value ">{{ option.label }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div> -->
-
                         <!-- end date -->
                         <div class="col-6 ">
                             <div class="mb-3 ">
                                 <label for="exampleInputPassword1 " class="form-label ">End date</label>
                                 <input type="date" [(ngModel)]="employee.end_date" name="end_date" class="form-control ">
-                                <!-- <input type="date" placeholder="not specified" class="form-control "> -->
                             </div>
                         </div>
 
