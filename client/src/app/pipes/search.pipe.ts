@@ -13,7 +13,10 @@ export class SearchPipe implements PipeTransform {
     searchText = searchText.toLowerCase();
 
     return employees.filter(employee => {
-      return employee.first_name || employee.last_name.toLowerCase().includes(searchText);
+      const first = employee.first_name.toLowerCase().includes(searchText);
+      const last = employee.last_name.toLowerCase().includes(searchText);
+
+      return first + last;
     });
   }
 
