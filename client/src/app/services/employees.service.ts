@@ -34,6 +34,10 @@ export class EmployeesService {
     return this.http.get(`${environment.SERVER_URL}` + '/api/one/' + emp_id)
   }
 
+  // update employee
+  updateEmployee(emp_id: any, employee:any){
+    return this.http.put(`${environment.SERVER_URL}` + '/api/update/' + emp_id,  employee)
+  }
 
   // delete employee
   deleteEmployee(emp_id: any) {

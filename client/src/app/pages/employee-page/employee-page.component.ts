@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employees } from 'src/app/interfaces/employees';
+import { AlertService } from 'src/app/services/alert.service';
 import { EmployeesService } from 'src/app/services/employees.service';
 import Swal from 'sweetalert2'
 
@@ -14,11 +16,55 @@ declare const bootstrap: any;
 export class EmployeePageComponent implements OnInit {
 
 
-  employee: Employees | undefined;
+  employee: any;
 
   emp_id: any
 
-  constructor(private empserv: EmployeesService, private route: ActivatedRoute, private router: Router) { }
+
+  // editForm = new FormGroup({
+  //   contactno: new FormControl(''),
+  //   email: new FormControl(''),
+  //   position: new FormControl(''),
+  //   salary: new FormControl(''),
+  //   end_date: new FormControl('')
+  // });
+
+  
+  editForm = {
+    contactno: '',
+    email: '',
+    position: '',
+    salary: '',
+    end_date: ''
+  };
+
+  positions = [
+    { value: 'developer', label: 'Developer' },
+    { value: 'technician', label: 'Technician' },
+    { value: 'tester', label: 'Tester' }
+  ];
+
+  managers = [
+    { value: 'adelaide', label: 'Adelaide' },
+    { value: 'rorisang', label: 'Rorisang' },
+    { value: 'thondo', label: 'Thondo' }
+  ];
+
+
+  contracts = [
+    { value: 'full time', label: 'Full Time' },
+    { value: 'part time', label: 'Part Time' },
+    { value: 'contract', label: 'Contract' }
+  ];
+
+  employments = [
+    { value: 'hybrid', label: 'Hybrid' },
+    { value: 'remote', label: 'Remote' },
+    { value: 'onsite', label: 'Onsite' }
+  ];
+
+
+  constructor(private alert: AlertService, private empserv: EmployeesService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.emp_id = this.route.snapshot.paramMap.get('emp_id') || '';
@@ -37,6 +83,31 @@ export class EmployeePageComponent implements OnInit {
   }
 
 
+
+  // ediit employee function
+  editEmployee() {
+
+     // user object
+     let details = {
+      // contactno: this.editForm.value.contactno,
+      // email: this.editForm.value.email,
+      position: this.editForm.position,
+      salary: this.editForm.salary,
+      // end_date: this.editForm.value.end_date
+    };
+
+console.log(details);
+
+    this.empserv.updateEmployee(this.emp_id, details).subscribe((res:any)=>{
+      console.log(res);
+      this.alert.success(res.message)
+    })
+
+  }
+
+
+
+  // delete employee function
   deleteEmployee() {
 
     Swal.fire({
@@ -49,7 +120,7 @@ export class EmployeePageComponent implements OnInit {
       confirmButtonText: "Yes, delete!"
     }).then((result) => {
       if (result.isConfirmed) {
-        this.empserv.deleteEmployee(this.emp_id).subscribe((res:any)=>{
+        this.empserv.deleteEmployee(this.emp_id).subscribe((res: any) => {
           console.log(res);
           this.router.navigate(['private/dash'])
         })
@@ -59,7 +130,7 @@ export class EmployeePageComponent implements OnInit {
           icon: "success"
         });
       }
-      
+
     });
 
 

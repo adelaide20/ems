@@ -90,7 +90,7 @@ export class CreateComponent implements OnInit {
 
     this.employee = JSON.parse(localStorage.getItem('employee') || '');
 
-    // user object
+    // employee object
     let employment = {
       employee: this.employee.res[0].emp_id,
       position: this.employmentForm.value.position,

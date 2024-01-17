@@ -134,15 +134,15 @@ exports.updateDetails = (request, response) => {
 
     const details = {
         position: request.body.position,
-        emp_status: request.body.emp_status,
+        // emp_status: request.body.emp_status,
         salary: request.body.salary,
         end_date: request.body.end_date
     }
 
     try {
         pool.query(`UPDATE employment
-        SET position = $1, emp_status = $2, salary = $3, end_date = $4
-        WHERE employee = ${emp_id}`, [details.position, details.emp_status, details.salary, details.end_date],
+        SET position = $1, salary = $2, end_date = $3
+        WHERE employee = ${emp_id}`, [details.position, details.salary, details.end_date],
             (error, results) => {
                 if (error) {
                     throw error;

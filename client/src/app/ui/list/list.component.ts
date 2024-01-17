@@ -30,6 +30,6 @@ export class ListComponent implements OnInit {
   viewEmp(emp_id:any) {
     let url = 'private/employee/' + emp_id
     this.router.navigate([url])
-  }
+  } 
 
 }
